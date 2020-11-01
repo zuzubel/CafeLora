@@ -1,9 +1,12 @@
 import './index.html';
 import './style.css';
 
-const btnElm = document.querySelector('#nav-btn');
+const navBtnElm = document.querySelector('#nav-btn');
 const navElm = document.querySelector('nav');
 const menuAtrElm = document.querySelectorAll('.menu-a');
+const orderBtn = document.querySelector(".order-btn")
+const drinkElm = document.querySelector(".drink__cup")
+let ordered = false;
 
 //funkce která schová a otevírá menu
 const hideNav = () => {
@@ -11,7 +14,7 @@ const hideNav = () => {
 };
 
 //na klik na menu se otevře a schová
-btnElm.addEventListener('click', hideNav);
+navBtnElm.addEventListener('click', hideNav);
 
 //po kliknutí na jednotlivý odkaz se menu schová
 menuAtrElm.forEach((e) => {
@@ -19,6 +22,20 @@ menuAtrElm.forEach((e) => {
     hideNav();
   });
 });
+
+//po kliknutí zobrazí jiný obrázek a změní nápis tlačítka
+orderBtn.addEventListener("click", () => {
+  if (ordered){
+    drinkElm.classList.add("drink__cup--selected");
+    orderBtn.textContent = "Zrušit"
+    ordered = false;
+  } else {
+    drinkElm.classList.remove("drink__cup--selected")
+    orderBtn.textContent = "Objednat"
+    ordered = true;
+  }
+})
+
 
 
 
