@@ -81,8 +81,13 @@ const drinks = [
 const drinksListElm = document.querySelector(".drinks-list")
 
 //tímto vložím komponentu Drink, která si načte objekty drinks, do divu s třídou .drinks-list
-drinks.forEach((drink) => {
+/* drinks.forEach((drink) => {
 drinksListElm.appendChild(Drink(drink))
-})
+}) */
 
 
+//získání pole drinků přes api
+fetch('http://cafelora.kodim.cz/api/drinks')
+.then((resp) => resp.json())
+.then((json) => json.forEach((drink) => {
+  drinksListElm.appendChild(Drink(drink))}))
