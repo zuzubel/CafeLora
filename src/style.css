@@ -300,3 +300,7 @@ nav a:hover {
     display: none
   }
 }
+
+.gallery--p{
+padding: 20px 50% 20px 20px;
+}
