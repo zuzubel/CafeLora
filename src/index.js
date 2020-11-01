@@ -1,14 +1,11 @@
 import './index.html';
 import './style.css';
-import {Layer} from './Layer'
-import './Layer/style.css'
+import { Drink } from './Drink';
+
 
 const navBtnElm = document.querySelector('#nav-btn');
 const navElm = document.querySelector('nav');
 const menuAtrElm = document.querySelectorAll('.menu-a');
-const orderBtn = document.querySelector('.order-btn');
-const drinkElm = document.querySelector('.drink__cup');
-let ordered = false;
 
 //funkce která schová a otevírá menu
 const hideNav = () => {
@@ -25,46 +22,25 @@ menuAtrElm.forEach((e) => {
   });
 });
 
-//po kliknutí zobrazí jiný obrázek a změní nápis tlačítka
-orderBtn.addEventListener('click', () => {
-  if (ordered) {
-    drinkElm.classList.add('drink__cup--selected');
-    orderBtn.textContent = 'Zrušit';
-    ordered = false;
-  } else {
-    drinkElm.classList.remove('drink__cup--selected');
-    orderBtn.textContent = 'Objednat';
-    ordered = true;
-  }
-});
 
-const cappuccino = [
-  {
-    color: '#feeeca',
-    label: 'mléčná pěna',
-  },
-  {
-    color: '#fed7b0',
-    label: 'teplé mléko',
-  },
-  {
-    color: '#613916',
-    label: 'espresso',
-  },
-];
+const drink =
+{
+  id: 'romano',
+  name: 'Romano',
+  ordered: false,
+  layers: [
+    {
+      color: '#fbdf5b',
+      label: 'citrón',
+    },
+    {
+      color: '#613916',
+      label: 'espresso',
+    },
+  ],
+};
 
-const drinkInfoElm = document.querySelector('.drink__info');
+const drinksListElm = document.querySelector(".drinks-list")
 
-//předání bloku objektů přes for smyčku
-/* for (let i = 0; i < cappuccino.length; i += 1){
-  drinkInfoElm.appendChild(Layer(cappuccino[i]))
-} */
-
-//předání bloku objektů komponentě for smyčkou
-cappuccino.forEach((drink) => {
-  drinkInfoElm.appendChild(Layer(drink))
-})
-
-
-
-
+//tímto vložím komponentu Drink, který si načte objekty drink do divu s třídou .drinks-list
+drinksListElm.appendChild(Drink(drink))

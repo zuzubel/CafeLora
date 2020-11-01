@@ -1,4 +1,6 @@
 
+import './style.css';
+
 export const Layer = (props) => {
   const layerDivElm = document.createElement('div');
   layerDivElm.className = 'layer';
