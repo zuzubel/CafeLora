@@ -40,7 +40,49 @@ const drink =
   ],
 };
 
+
+const drinks = [
+  {
+    id: 'cappuccino',
+    name: 'Cappuccino',
+    ordered: false,
+    layers: [
+      {
+        color: '#feeeca',
+        label: 'mléčná pěna',
+      },
+      {
+        color: '#fed7b0',
+        label: 'teplé mléko',
+      },
+      {
+        color: '#613916',
+        label: 'espresso',
+      },
+    ],
+  },
+  {
+    id: 'romano',
+    name: 'Romano',
+    ordered: false,
+    layers: [
+      {
+        color: '#fbdf5b',
+        label: 'citrón',
+      },
+      {
+        color: '#613916',
+        label: 'espresso',
+      },
+    ],
+  },
+];
+
 const drinksListElm = document.querySelector(".drinks-list")
 
-//tímto vložím komponentu Drink, který si načte objekty drink do divu s třídou .drinks-list
+//tímto vložím komponentu Drink, která si načte objekty drinks, do divu s třídou .drinks-list
+drinks.forEach((drink) => {
 drinksListElm.appendChild(Drink(drink))
+})
+
+
